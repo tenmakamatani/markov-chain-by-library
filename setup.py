@@ -6,7 +6,7 @@ import re
 class Setup:
 
     def separate_text(self, text_path, output_path):
-         """separate text to fit markovify
+        """separate text to fit markovify
 
         Parameters
         ----------
