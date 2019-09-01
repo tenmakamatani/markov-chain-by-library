@@ -4,12 +4,24 @@ import gensim
 import setup
 setup = setup.Setup()
 
+DATA_PATH = './data.txt'
+OUTPUT_PATH = './output.txt'
+BIN_PATH = './model.bin'
+
 def main():
+
+    if (len(sys.argv) <= 1):
+        print('Usage: python main.py `argument`')
+        exit()
+
+    print('separating text...')
+    setup.separate_text(DATA_PATH, OUTPUT_PATH)
+
     print('creating word_list...')
-    word_list = setup.create_word_list('./output.txt')
+    word_list = setup.create_word_list(OUTPUT_PATH)
 
     print('searching max_similar_word...')
-    max_similar_word = search_similar_word('./model.bin', sys.argv[1], word_list)
+    max_similar_word = search_similar_word(BIN_PATH, sys.argv[1], word_list)
 
     splited_text = open('output.txt').read()
 
