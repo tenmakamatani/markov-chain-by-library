@@ -1,5 +1,6 @@
 import markovify
 import sys
+import os
 import gensim
 import setup
 setup = setup.Setup()
@@ -14,8 +15,13 @@ def main():
         print('Usage: python main.py `argument`')
         exit()
 
-    print('separating text...')
-    setup.separate_text(DATA_PATH, OUTPUT_PATH)
+    if not os.path.exists(BIN_PATH):
+        print('No bin file')
+        exit()
+
+    if not os.path.exists(OUTPUT_PATH):
+        print('separating text...')
+        setup.separate_text(DATA_PATH, OUTPUT_PATH)
 
     print('creating word_list...')
     word_list = setup.create_word_list(OUTPUT_PATH)
