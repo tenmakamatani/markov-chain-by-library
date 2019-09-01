@@ -1,5 +1,6 @@
 import markovify
 import sys
+import re
 import os
 import gensim
 import setup
